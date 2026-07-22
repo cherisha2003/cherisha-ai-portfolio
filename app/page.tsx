@@ -96,7 +96,7 @@ export default function Home() {
   },[]);
   return <main>
     <CommandPalette open={palette} close={()=>setPalette(false)}/>
-    <AnimatePresence>{selectedProject && <motion.div className="project-modal-wrap" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} onMouseDown={()=>setSelectedProject(null)}>
+    <AnimatePresence>{selectedProject && <motion.div className="project-modal-wrap" data-lenis-prevent initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} onMouseDown={()=>setSelectedProject(null)}>
       <motion.article className={`project-modal ${selectedProject.tone}`} initial={{opacity:0,y:28,scale:.98}} animate={{opacity:1,y:0,scale:1}} exit={{opacity:0,y:18,scale:.98}} onMouseDown={e=>e.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
         <button className="modal-close" onClick={()=>setSelectedProject(null)} aria-label="Close project details"><X/></button>
         <div className="modal-kicker"><span>{selectedProject.no} / {selectedProject.tag}</span><b>{selectedProject.status}</b></div>
