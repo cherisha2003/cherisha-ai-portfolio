@@ -6,7 +6,7 @@ A multidisciplinary portfolio showcasing selected work across software engineeri
 
 - **Swasthatha** — a privacy-focused mental wellness companion with a detailed product case study
 - **Cleft Detection in Antenatal Scans** — computer-vision research with the paper and conference presentation certificate
-- **Restaurant Intelligence** — a data analytics and operational decision-making dashboard concept
+- **Personal Finance Intelligence** — a work-in-progress bill-scanning and expense analytics dashboard
 - **Pet Next Door** — a full-stack community platform for pet owners
 
 ## Highlights
