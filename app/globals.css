@@ -5,6 +5,21 @@
 @media(max-width:560px){.shell{width:calc(100% - 28px)}.nav{height:74px}.mobile-menu{top:74px}.hero{min-height:790px;padding-top:60px;align-items:start}.hero h1{font-size:51px}.hero-copy>p{font-size:13px}.hero-actions{align-items:flex-start;flex-direction:column;gap:18px}.orb-wrap{height:390px;width:100%;right:-34%;top:365px}.status{grid-template-columns:1fr}.status>div,.status>div:first-child{padding:19px 0;border-right:0}.section{padding-top:100px}.section-head{margin-bottom:35px}.section h2{font-size:49px}.project{padding:18px;min-height:450px}.project-visual{height:230px}.timeline-row{grid-template-columns:50px 1fr 20px;gap:10px;padding:24px 0}.timeline-row p{font-size:11px}.about{padding-bottom:100px}.education{grid-template-columns:26px 1fr}.contact h2{font-size:49px}footer{height:auto;padding:35px 0;gap:25px;flex-wrap:wrap}footer p{order:3;width:100%}.chips{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
 
+/* Simplified landing experience: detail lives behind project interactions. */
+.swasthatha-study,.case-section{display:none}
+.hero-focus{align-self:center;margin-left:12%;border:1px solid var(--line);background:linear-gradient(145deg,#0d1212,#080a0b);padding:32px;position:relative}
+.hero-focus:before{content:"";position:absolute;inset:-1px;pointer-events:none;background:linear-gradient(135deg,rgba(198,161,91,.18),transparent 38%,rgba(0,164,154,.12));opacity:.8}
+.hero-focus>span{display:block;color:var(--gold);font:700 9px monospace;letter-spacing:.18em;margin-bottom:30px;position:relative}
+.hero-focus>div{position:relative;padding:19px 0;border-top:1px solid var(--line);font:700 clamp(14px,1.5vw,21px)/1.2 Arial,Helvetica,sans-serif;letter-spacing:-.02em}
+.hero-focus>div:before{content:"0" counter(focus);counter-increment:focus;color:var(--teal);font:700 8px monospace;margin-right:18px}
+.hero-focus{counter-reset:focus}
+.about-hobbies,.about-links{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.about-hobbies span,.about-links a{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:10px 12px;color:#b8bfbb;text-decoration:none;font:700 8px monospace;letter-spacing:.08em}
+.about-hobbies svg,.about-links svg{width:14px;height:14px;color:var(--gold)}
+.about-links a:hover{border-color:var(--teal);color:white}
+@media(max-width:900px){.hero-focus{margin:0 0 60px;align-self:start}.hero{min-height:auto}.hero-copy{padding:80px 0 50px}}
+@media(max-width:560px){.hero-focus{padding:22px;margin-bottom:45px}.hero-copy{padding:55px 0 35px}}
+
 .case-section{padding-bottom:20px}.case-list{border-top:1px solid var(--line)}.case-card{display:grid;grid-template-columns:60px 1.15fr 1fr 30px;gap:28px;align-items:start;padding:42px 10px;border-bottom:1px solid var(--line);position:relative;transition:background .35s,padding .35s}.case-card:hover{background:linear-gradient(90deg,rgba(0,164,154,.055),rgba(198,161,91,.025),transparent);padding-left:20px}.case-index{font:700 12px monospace;color:var(--gold);padding-top:4px}.case-main>span{font:700 9px monospace;letter-spacing:.15em;color:var(--teal)}.case-main h3{font-size:clamp(25px,3vw,42px);line-height:1.08;letter-spacing:-.035em;margin:15px 0}.case-main>p{color:#8b918e;line-height:1.65;font-size:13px;max-width:590px}.case-details{display:grid;gap:16px}.case-details>div{border-left:1px solid var(--line);padding-left:18px}.case-details b{display:block;text-transform:uppercase;font:700 8px monospace;letter-spacing:.14em;color:var(--red)}.case-details p{margin:7px 0 0;color:#929895;font-size:11px;line-height:1.5}.case-arrow{color:#626966}
 @media(max-width:900px){.case-card{grid-template-columns:42px 1fr 26px}.case-details{grid-column:2/3}.case-arrow{grid-column:3;grid-row:1}}
 @media(max-width:560px){.case-card{grid-template-columns:28px 1fr 20px;gap:12px;padding:30px 0}.case-card:hover{padding-left:0}.case-main h3{font-size:27px}.case-details>div{padding-left:12px}}

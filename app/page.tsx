@@ -1,22 +1,19 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, OrbitControls, Sparkles } from "@react-three/drei";
 import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
 import {
   ArrowDownRight, ArrowUpRight, BrainCircuit, BriefcaseBusiness,
   Command, Download, Code2, GraduationCap, Link, Mail, BarChart3,
-  Menu, Terminal, X, Zap, Layers3, Database, Boxes, FileText, Award
+  Menu, X, Zap, Layers3, Boxes, FileText, Award, BookOpen, CookingPot, MapPin
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
+import { useEffect, useState } from "react";
 
 const projects = [
-  { no: "01", title: "Swasthatha", tag: "PRODUCT + SOFTWARE", tone: "red", metric: "0→1 Mobile Product", icon: Layers3, description: "A privacy-first journaling and emotional-support app shaped from user experience and product decisions through a working React Native build.", stack: ["React Native", "Supabase", "Product Design"], role: "Product Manager · AI Engineer · Mobile Developer", status: "Ongoing", problem: "Mental wellness apps often feel either clinical and overwhelming or conversational but generic, while sensitive personal reflections raise serious questions about privacy and control.", contribution: "I shaped the product strategy, designed the emotional journey, engineered the mobile experience, connected authentication and storage, and iterated the assistant’s conversation behavior through prompt design and testing.", decisions: ["Local-only or cloud-sync privacy controls", "Context-aware breathing instead of a permanent widget", "Reflection-oriented guidance rather than dependency", "A notebook feel without sacrificing mobile usability"], outcome: "A working cross-platform product with authentication, profiles, conversations, journals, check-ins, timelines, privacy controls and session summaries.", deepDive: true },
-  { no: "02", title: "Cleft Detection", tag: "AI + RESEARCH", tone: "teal", metric: "Clinical CV", icon: BrainCircuit, description: "A deep-learning system for prenatal ultrasound classification, with input-quality checks and Grad-CAM explanations for more dependable results.", stack: ["Python", "TensorFlow", "Grad-CAM"], role: "Machine Learning Researcher · Developer", status: "Presented at ICCCNT 2025", problem: "Prenatal cleft detection from ultrasound imagery is difficult because image quality varies, relevant features can be subtle, and clinicians need more than an unexplained prediction.", contribution: "I prepared and expanded the dataset, trained and compared CNN architectures, evaluated classification performance, added Grad-CAM explanations, and helped translate the work into a research paper and conference presentation.", decisions: ["Compared multiple transfer-learning architectures", "Used augmentation for a limited medical dataset", "Added Grad-CAM for model transparency", "Included input-quality thinking for dependable inference"], outcome: "Produced a high-performing research prototype, documented the methodology in a six-page paper, and presented the work at ICCCNT 2025 at IIT Indore.", paper: "/Cleft_Detection_Antenatal_Scan_Paper.pdf", certificate: "/Cherisha_KG_ICCCNT_2025_Presentation_Certificate.pdf" },
+  { no: "01", title: "Swasthatha", tag: "PRODUCT + SOFTWARE", tone: "red", metric: "0→1 Mobile Product", icon: Layers3, description: "A privacy-first mental wellness companion built for thoughtful reflection.", stack: ["React Native", "Supabase", "Product Design"], role: "Product Manager · AI Engineer · Mobile Developer", status: "Ongoing", problem: "Mental wellness apps often feel either clinical and overwhelming or conversational but generic, while sensitive personal reflections raise serious questions about privacy and control.", contribution: "I shaped the product strategy, designed the emotional journey, engineered the mobile experience, connected authentication and storage, and iterated the assistant’s conversation behavior through prompt design and testing.", decisions: ["Local-only or cloud-sync privacy controls", "Context-aware breathing instead of a permanent widget", "Reflection-oriented guidance rather than dependency", "A notebook feel without sacrificing mobile usability"], outcome: "A working cross-platform product with authentication, profiles, conversations, journals, check-ins, timelines, privacy controls and session summaries.", deepDive: true, github: "https://github.com/cherisha2003/Swasthatha" },
+  { no: "02", title: "Cleft Detection", tag: "AI + RESEARCH", tone: "teal", metric: "Clinical CV", icon: BrainCircuit, description: "A research-backed prenatal ultrasound classification system.", stack: ["Python", "TensorFlow", "Grad-CAM"], role: "Machine Learning Researcher · Developer", status: "Presented at ICCCNT 2025", problem: "Prenatal cleft detection from ultrasound imagery is difficult because image quality varies, relevant features can be subtle, and clinicians need more than an unexplained prediction.", contribution: "I prepared and expanded the dataset, trained and compared CNN architectures, evaluated classification performance, added Grad-CAM explanations, and helped translate the work into a research paper and conference presentation.", decisions: ["Compared multiple transfer-learning architectures", "Used augmentation for a limited medical dataset", "Added Grad-CAM for model transparency", "Included input-quality thinking for dependable inference"], outcome: "Produced a high-performing research prototype, documented the methodology in a six-page paper, and presented the work at ICCCNT 2025 at IIT Indore.", paper: "/Cleft_Detection_Antenatal_Scan_Paper.pdf", certificate: "/Cherisha_KG_ICCCNT_2025_Presentation_Certificate.pdf", github: "https://github.com/cherisha2003/cleft-detection-" },
   { no: "03", title: "Personal Finance Intelligence", tag: "DATA + PRODUCT", tone: "gold", metric: "Smart Expense Dashboard", icon: BarChart3, description: "A personal finance dashboard that turns bill screenshots into categorized expenses, savings insights and practical recommendations for better spending decisions.", stack: ["OCR", "Data Analytics", "Dashboard Design"], role: "Product Manager · Data Analyst · Developer", status: "Work in progress", problem: "Personal spending is spread across receipts, bills and transactions. Manually entering every expense is tedious, while most finance apps show totals without explaining where money is going or what behavior could realistically change.", contribution: "I am designing the end-to-end product: bill-image upload, OCR-based information extraction, automatic expense categorization, spending and savings calculations, dashboard metrics, trend analysis and personalized recommendations.", decisions: ["Use bill screenshots to reduce manual data entry", "Let users verify extracted merchant, date, total and category", "Show category spending, cash flow and savings together", "Turn patterns into specific, non-judgmental suggestions"], outcome: "The project is currently in development. The planned experience will scan bills, calculate monthly spending and savings, visualize category trends, flag unusual or avoidable expenses, and suggest realistic areas where the user can cut back." },
-  { no: "04", title: "Pet Next Door", tag: "SOFTWARE ENGINEERING", tone: "peacock", metric: "Community Platform", icon: Code2, description: "A full product concept for pet profiles, playdates, lost-and-found alerts and adoption workflows, designed through an agile software process.", stack: ["Django", "GitHub", "Agile"], role: "Software Engineer · Product Contributor", status: "Academic team project", problem: "Pet owners use separate channels for playdates, lost-pet alerts, adoption and safety information, making local coordination slow and inconsistent.", contribution: "I helped define stakeholders and requirements, shaped the feature set and architecture, supported sprint planning, and contributed to the Django-based implementation and project communication.", decisions: ["Unified several community needs in one platform", "Used location-aware flows for lost-pet alerts", "Structured work through requirements and agile sprints", "Balanced owner, shelter and community stakeholder needs"], outcome: "Delivered a documented software product concept and implementation covering pet profiles, playdates, lost-and-found, adoption or foster workflows and safety alerts." },
+  { no: "04", title: "Pet Next Door", tag: "SOFTWARE ENGINEERING", tone: "peacock", metric: "Community Platform", icon: Code2, description: "A community platform connecting pet owners and local support.", stack: ["Django", "GitHub", "Agile"], role: "Software Engineer · Product Contributor", status: "Academic team project", problem: "Pet owners use separate channels for playdates, lost-pet alerts, adoption and safety information, making local coordination slow and inconsistent.", contribution: "I helped define stakeholders and requirements, shaped the feature set and architecture, supported sprint planning, and contributed to the Django-based implementation and project communication.", decisions: ["Unified several community needs in one platform", "Used location-aware flows for lost-pet alerts", "Structured work through requirements and agile sprints", "Balanced owner, shelter and community stakeholder needs"], outcome: "Delivered a documented software product concept and implementation covering pet profiles, playdates, lost-and-found, adoption or foster workflows and safety alerts.", github: "https://github.com/dubemmmm/swe-fall-2025-project" },
 ];
 
 type Project = (typeof projects)[number];
@@ -44,37 +41,8 @@ const swasthathaPrinciples = [
 
 const swasthathaFeatures = ["Context-aware AI conversations", "Smart journal + gratitude prompts", "Daily emotional check-ins", "Timeline-based reflection history", "AI-generated session summaries", "On-device or cloud privacy controls", "Emotion tracking + insights", "Distress-triggered guided breathing"];
 
-function Core() {
-  const ref = useRef<THREE.Mesh>(null);
-  useFrame((state, delta) => {
-    if (!ref.current) return;
-    ref.current.rotation.x += delta * .09;
-    ref.current.rotation.y += delta * .13;
-    ref.current.position.y = Math.sin(state.clock.elapsedTime * .7) * .12;
-  });
-  return (
-    <group>
-      <Float speed={1.5} rotationIntensity={.45} floatIntensity={.65}>
-        <mesh ref={ref} scale={1.55}>
-          <icosahedronGeometry args={[1, 8]} />
-          <MeshDistortMaterial color="#008f8b" roughness={.08} metalness={.88} distort={.34} speed={1.5} />
-        </mesh>
-        <mesh scale={1.8}>
-          <icosahedronGeometry args={[1, 2]} />
-          <meshBasicMaterial color="#c6a15b" wireframe transparent opacity={.24} />
-        </mesh>
-      </Float>
-      <Sparkles count={75} scale={6} size={1.3} speed={.35} color="#d6b66f" />
-    </group>
-  );
-}
-
-function Orb() {
-  return <Canvas camera={{ position: [0, 0, 5], fov: 38 }} dpr={[1, 1.5]}><ambientLight intensity={.55}/><directionalLight position={[3,3,4]} intensity={3} color="#d51f3c"/><pointLight position={[-4,-2,3]} intensity={35} color="#00b3a9"/><Core/><OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={.4}/></Canvas>;
-}
-
 function CommandPalette({ open, close }: { open: boolean; close: () => void }) {
-  const items = [["Selected work", "#work"], ["Case studies", "#case-studies"], ["Experience", "#experience"], ["About", "#about"], ["Email me", "mailto:cherishakg2003@gmail.com"]];
+  const items = [["Selected work", "#work"], ["Experience", "#experience"], ["About", "#about"], ["LinkedIn", "https://www.linkedin.com/in/cherishakg/"]];
   return <AnimatePresence>{open && <motion.div className="palette-wrap" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} onMouseDown={close}>
     <motion.div className="palette" initial={{opacity:0, y:-20, scale:.97}} animate={{opacity:1,y:0,scale:1}} exit={{opacity:0,y:-12,scale:.98}} onMouseDown={e=>e.stopPropagation()}>
       <div className="palette-search"><Command size={16}/><input autoFocus placeholder="Type a command or search…"/><kbd>ESC</kbd></div>
@@ -110,7 +78,8 @@ export default function Home() {
           <section><span>04 / OUTCOME</span><h3>Where the work stands</h3><p>{selectedProject.outcome}</p></section>
         </div>
         <div className="modal-actions">
-          {selectedProject.deepDive && <a href="#swasthatha" onClick={()=>setSelectedProject(null)}>READ FULL CASE STUDY <ArrowDownRight/></a>}
+          {selectedProject.deepDive && <a href="https://github.com/cherisha2003/Swasthatha" target="_blank">EXPLORE CASE STUDY <ArrowUpRight/></a>}
+          {"github" in selectedProject && selectedProject.github && <a href={selectedProject.github} target="_blank"><Code2/> VIEW CODE ON GITHUB</a>}
           {selectedProject.paper && <a href={selectedProject.paper} target="_blank"><FileText/> VIEW PAPER</a>}
           {selectedProject.certificate && <a href={selectedProject.certificate} target="_blank"><Award/> VIEW CERTIFICATE</a>}
         </div>
@@ -118,20 +87,20 @@ export default function Home() {
     </motion.div>}</AnimatePresence>
     <nav className="nav shell">
       <a className="brand" href="#top"><span>CKG</span><div>CHERISHA<br/><b>TECH · DATA · PRODUCT</b></div></a>
-      <div className="nav-links"><a href="#work">WORK</a><a href="#case-studies">CASE STUDIES</a><a href="#experience">EXPERIENCE</a><a href="#about">ABOUT</a></div>
+      <div className="nav-links"><a href="#work">PROJECTS</a><a href="#experience">EXPERIENCE</a><a href="#about">ABOUT</a></div>
       <button className="command-btn" onClick={()=>setPalette(true)}><Command size={14}/> COMMAND <kbd>⌘ K</kbd></button>
       <button className="menu-btn" onClick={()=>setMenu(!menu)} aria-label="Toggle menu">{menu?<X/>:<Menu/>}</button>
-      {menu&&<div className="mobile-menu"><a href="#work">WORK</a><a href="#case-studies">CASE STUDIES</a><a href="#experience">EXPERIENCE</a><a href="#about">ABOUT</a></div>}
+      {menu&&<div className="mobile-menu"><a href="#work">PROJECTS</a><a href="#experience">EXPERIENCE</a><a href="#about">ABOUT</a></div>}
     </nav>
 
     <section id="top" className="hero shell">
       <div className="hero-copy">
         <div className="eyebrow"><i/> COMPUTER SCIENCE + PRODUCT <span>/</span> ATLANTA, GA</div>
-        <motion.h1 initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{duration:.8}}>I TURN<br/><em>COMPLEXITY</em><br/>INTO PRODUCTS.</motion.h1>
-        <p>I work across software engineering, data, AI/ML and product—finding the real problem, building the system and making the result useful for people.</p>
+        <motion.h1 initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{duration:.8}}>CHERISHA<br/><em>KILLARI</em><br/>GIRIBABU.</motion.h1>
+        <p>Computer science graduate student building thoughtful work across software engineering, data, AI/ML and product.</p>
         <div className="hero-actions"><a className="primary" href="#work">EXPLORE MY WORK <ArrowDownRight size={17}/></a><a className="text-link" href="/Cherisha_KG_Resume.docx" download><Download size={15}/> RESUME</a></div>
       </div>
-      <div className="orb-wrap"><div className="orbit-label top">DATA / SYSTEMS <span>01</span></div><div className="orbit-label bottom">PRODUCT / PEOPLE <span>04</span></div><Orb/><div className="scanline"/></div>
+      <div className="hero-focus" aria-label="Areas of focus"><span>AREAS OF FOCUS</span><div>SOFTWARE ENGINEERING</div><div>DATA &amp; ANALYTICS</div><div>AI &amp; MACHINE LEARNING</div><div>PRODUCT MANAGEMENT</div></div>
       <div className="hero-side"><span>EXPLORE THE WORK</span><div/><ArrowDownRight size={16}/></div>
     </section>
 
@@ -177,11 +146,11 @@ export default function Home() {
     </section>
 
     <section id="about" className="section shell about">
-      <div className="about-copy"><span>04 / ABOUT</span><h2>TECHNICAL DEPTH.<br/><em>PRODUCT CURIOSITY.</em></h2><p>I’m Cherisha, an MS Computer Science student at Georgia State University. I enjoy moving between code, data and product questions: understanding users, defining the right metrics, engineering a reliable solution and communicating why it matters.</p><div className="education"><GraduationCap/><div><b>Georgia State University</b><span>MS Computer Science · Present</span></div><div><b>Hindustan Institute of Technology</b><span>B.Tech CSE (AI & ML) · 2025</span></div></div></div>
-      <div className="skills-panel"><div className="panel-head"><Boxes size={17}/><span>WHAT I BRING</span><i/></div><div className="skill-grid">{["Software Engineering","Data Analysis","Product Strategy","Machine Learning","React / React Native","Python + SQL","User Research","Data Storytelling"].map((s,i)=><div key={s}><span>0{i+1}</span>{s}<b style={{width:`${94-i*3}%`}}/></div>)}</div><div className="terminal-line"><span>›</span> I learn the domain, then build for it.<i/></div></div>
+      <div className="about-copy"><span>03 / ABOUT</span><h2>A LITTLE<br/><em>ABOUT ME.</em></h2><p>I’m Cherisha, an MS Computer Science student at Georgia State University with a background in software engineering, data, machine learning and product thinking. I like understanding why a problem matters, learning the domain and building solutions that are useful—not just technically impressive.</p><p>Outside work and university, I enjoy cooking, reading novels and exploring new places around town.</p><div className="about-hobbies"><span><CookingPot/> Cooking</span><span><BookOpen/> Reading novels</span><span><MapPin/> Exploring places</span></div><div className="about-links"><a href="https://github.com/cherisha2003" target="_blank"><Code2/> GITHUB</a><a href="https://www.linkedin.com/in/cherishakg/" target="_blank"><Link/> LINKEDIN</a><a href="mailto:cherishakg2003@gmail.com"><Mail/> EMAIL</a></div><div className="education"><GraduationCap/><div><b>Georgia State University</b><span>MS Computer Science · Present</span></div><div><b>Hindustan Institute of Technology</b><span>B.Tech CSE (AI & ML) · 2025</span></div></div></div>
+      <div className="skills-panel"><div className="panel-head"><Boxes size={17}/><span>OVERVIEW</span><i/></div><div className="skill-grid">{["Software Engineering","Data Analysis","Product Strategy","Machine Learning"].map((s,i)=><div key={s}><span>0{i+1}</span>{s}<b style={{width:`${94-i*5}%`}}/></div>)}</div><div className="terminal-line"><span>›</span> Curious about people, systems and better ways to build.<i/></div></div>
     </section>
 
-    <section className="contact shell"><div className="contact-orb"><Zap/></div><span>HAVE AN IDEA?</span><h2>LET’S BUILD<br/><em>SOMETHING GREAT.</em></h2><a href="mailto:cherishakg2003@gmail.com">START A CONVERSATION <ArrowUpRight/></a></section>
+    <section className="contact shell"><div className="contact-orb"><Zap/></div><span>LET’S CONNECT</span><h2>WANT TO<br/><em>TALK?</em></h2><a href="https://www.linkedin.com/in/cherishakg/" target="_blank">CONNECT WITH ME <ArrowUpRight/></a></section>
     <footer className="shell"><div className="brand"><span>CKG</span><div>CHERISHA<br/><b>TECH · DATA · PRODUCT</b></div></div><p>BUILT AROUND CURIOSITY, CLARITY &amp; REAL PROBLEMS © 2026</p><div><a href="https://www.linkedin.com/in/cherishakg/" target="_blank" aria-label="LinkedIn"><Link/></a><a href="mailto:cherishakg2003@gmail.com" aria-label="Email"><Mail/></a><a href="https://github.com/cherisha2003" target="_blank" aria-label="GitHub"><Code2/></a></div></footer>
   </main>;
 }
