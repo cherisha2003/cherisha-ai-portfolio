@@ -1,0 +1,5 @@
+import Link from "next/link";
+import { ArrowUpRight, Code2, Link2, Mail } from "lucide-react";
+export function Header(){return <header className="site-header"><Link className="wordmark" href="/">Cherisha KG</Link><nav><Link href="/projects">Projects</Link><Link href="/experience">Experience</Link><Link href="/about">About</Link></nav><a className="contact-link" href="https://www.linkedin.com/messaging/" target="_blank">Let’s connect <ArrowUpRight size={14}/></a></header>}
+export function Footer(){return <footer><div><b>Cherisha KG</b><span>Software Engineering · Data Analysis</span></div><div className="socials"><a href="https://github.com/cherisha2003" target="_blank" aria-label="GitHub"><Code2/></a><a href="https://www.linkedin.com/in/cherishakg/" target="_blank" aria-label="LinkedIn"><Link2/></a><a href="mailto:cherishakg2003@gmail.com" aria-label="Email"><Mail/></a></div><small>© 2026 Cherisha Killari Giribabu</small></footer>}
+export function PageShell({children}:{children:React.ReactNode}){return <><Header/><main>{children}</main><Footer/></>}

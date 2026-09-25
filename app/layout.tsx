@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cherisha KG — Software, Data, AI & Product",
-  description: "Portfolio of Cherisha KG: software engineering, data analytics, AI/ML and product case studies.",
+  title: "Cherisha KG — Software Engineer & Data Analyst",
+  description: "Portfolio of Cherisha Killari Giribabu, focused on software engineering and data analysis.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
